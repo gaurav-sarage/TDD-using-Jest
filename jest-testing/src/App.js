@@ -1,25 +1,33 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 
 const App = () => {
-  const [data, setData] = useState(null);
+  const [heading, setHeading] = useState("Logged out");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/data");
-        setData(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  const onClick = () => {
+    setHeading("Logged in");
+  };
 
-    fetchData();
-  }, []);
-
-  return <div>
-    {data}
-  </div>
+  return (
+    <>
+      <button 
+        type="button"
+        onClick={onClick}
+      >
+        Log In
+      </button>
+      <h1>
+        {heading}
+      </h1>
+    </>
+  );
 };
+
+export const Title = () => {
+  return (
+    <h1>
+      Hello
+    </h1>
+  )
+}
 
 export default App;

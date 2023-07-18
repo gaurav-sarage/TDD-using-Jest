@@ -9,7 +9,7 @@ describe("App component", () => {
 
   render(<App />);
 
-  expect(screen.getByRole("heading").textContent).toMatch("Logged Out")
+  expect(screen.getByRole("heading").textContent).toMatch("Logged out")
  });
 
  it("renders logged in after button click", async () => {
@@ -20,7 +20,7 @@ describe("App component", () => {
 
   await user.click(button);
 
-  expect(screen.getByRole("heading").textContent).toMatch("Logged In");
+  expect(screen.getByRole("heading").textContent).toMatch("Logged in");
  });
 });
 
