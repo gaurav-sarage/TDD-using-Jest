@@ -1,27 +1,32 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import App from "./App";
+import App, { Title } from "./App";
+
 
 describe("App component", () => {
-  it("renders Logged out", () => {
-    render(<App />);
+ it("renders Logged out", () => {
 
-    expect(screen.getByRole("heading").textContent).toMatch("Logged out")
-  });
+  render(<App />);
 
-  it("renders logged in after button click", async () => {
-    const user = userEvent.setup();
+  expect(screen.getByRole("heading").textContent).toMatch("Logged Out")
+ });
 
-    render(<App />);
-    
-    const button = screen.getByRole("button", {
-      name: "Log In"
-    });
+ it("renders logged in after button click", async () => {
+  const user = userEvent;
 
-    await user.click(button);
+  render(<App />);
+  const button = screen.getByRole("button", { name: "Log In" });
 
-    expect(screen.getByRole("heading").textContent).toMatch("Logged in");
-  });
+  await user.click(button);
+
+  expect(screen.getByRole("heading").textContent).toMatch("Logged In");
+ });
 });
 
+describe("Title Component", () => {
+ it("renders Hello", () => {
+  render(<Title />);
+  expect(screen.getByRole("heading").textContent).toMatch("Hello")
+ })
+})
